@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from . import models
+
 def index(request):
-    return render(request, 'index.html', {'hello': 'Hello, Django!'})
+    article = models.Article.objects.get(pk=1)
+    return render(request, 'index.html', {'article': article})
